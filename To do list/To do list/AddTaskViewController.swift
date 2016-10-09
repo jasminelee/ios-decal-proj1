@@ -2,20 +2,75 @@
 //  AddTaskViewController.swift
 //  To do list
 //
-//  Created by Jasmine Lee on 10/8/16.
+//  Created by Jasmine Lee on 10/9/16.
 //  Copyright © 2016 Jasmine Lee. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class AddTaskViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    func addNewTask(taskName: String) {
-//        tasks.append(newElement: String)
-        collectionView?.reloadData()
+class AddTaskViewController: UIViewController {
+    
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var notesTextView: UITextView!
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
     }
     
-    var viewController: ViewController?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-    
+    @IBAction func addButtonTapped(_ sender: AnyObject) {
+        print("Button tapped")
+        let defaults = UserDefaults.standard
+        
+
+        var itemList:Array? = defaults.value(forKey: "itemList") as! Array?
+        
+//        var itemList:NSMutableArray? = defaults.value(forKey: "itemList") as! NSMutableArray?
+        
+        let dataSet:NSMutableDictionary = NSMutableDictionary()
+        dataSet.setValue(titleTextField, forKey: ("itemTitle" as NSCopying) as! String)
+        dataSet.setValue(notesTextView, forKey: ("itemNote" as NSCopying) as! String)
+        
+        if (itemList != nil) { // data available
+            let newMutableList:NSMutableArray = NSMutableArray()
+            
+            for dict in itemList! {
+                newMutableList.add(dict as! NSDictionary)
+            }
+            
+            defaults.removeObject(forKey: "itemList")
+            newMutableList.add(dataSet)
+            defaults.setValue(newMutableList, forKey: "itemList")
+            
+        } else { // first todo item in list
+            defaults.removeObject(forKey: "itemList")
+            itemList = NSMutableArray()
+            itemList!.add(dataSet)
+            defaults.setValue(itemList, forKey: "itemList")
+        }
+        defaults.synchronize()
+        self.navigationController!.popToRootViewController(animated: true)
+        print("finished pressing Done")
+    }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }

@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		004E8AEC1DAAE5C50064AA5E /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E8AEB1DAAE5C50064AA5E /* MasterTableViewController.swift */; };
+		004E8AEE1DAAE65B0064AA5E /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E8AED1DAAE65B0064AA5E /* AddTaskViewController.swift */; };
+		004E8AF01DAAE68D0064AA5E /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004E8AEF1DAAE68D0064AA5E /* StatsViewController.swift */; };
 		00A1F1801DA98A0F0003BA58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A1F17F1DA98A0F0003BA58 /* AppDelegate.swift */; };
 		00A1F1821DA98A0F0003BA58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A1F1811DA98A0F0003BA58 /* ViewController.swift */; };
 		00A1F1871DA98A0F0003BA58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00A1F1861DA98A0F0003BA58 /* Assets.xcassets */; };
 		00A1F1951DA98A0F0003BA58 /* To_do_listTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A1F1941DA98A0F0003BA58 /* To_do_listTests.swift */; };
 		00A1F1A01DA98A0F0003BA58 /* To_do_listUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A1F19F1DA98A0F0003BA58 /* To_do_listUITests.swift */; };
-		00A1F1B01DA9AA4B0003BA58 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A1F1AF1DA9AA4B0003BA58 /* AddTaskViewController.swift */; };
 		00A1F1B21DA9B4E10003BA58 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00A1F1B11DA9B4E10003BA58 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		004E8AEB1DAAE5C50064AA5E /* MasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
+		004E8AED1DAAE65B0064AA5E /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		004E8AEF1DAAE68D0064AA5E /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		00A1F17C1DA98A0E0003BA58 /* To do list.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "To do list.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00A1F17F1DA98A0F0003BA58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00A1F1811DA98A0F0003BA58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,7 +50,6 @@
 		00A1F19B1DA98A0F0003BA58 /* To do listUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "To do listUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00A1F19F1DA98A0F0003BA58 /* To_do_listUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = To_do_listUITests.swift; sourceTree = "<group>"; };
 		00A1F1A11DA98A0F0003BA58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00A1F1AF1DA9AA4B0003BA58 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		00A1F1B11DA9B4E10003BA58 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,11 +102,13 @@
 			isa = PBXGroup;
 			children = (
 				00A1F17F1DA98A0F0003BA58 /* AppDelegate.swift */,
+				004E8AEB1DAAE5C50064AA5E /* MasterTableViewController.swift */,
+				004E8AED1DAAE65B0064AA5E /* AddTaskViewController.swift */,
+				004E8AEF1DAAE68D0064AA5E /* StatsViewController.swift */,
 				00A1F1811DA98A0F0003BA58 /* ViewController.swift */,
 				00A1F1B11DA9B4E10003BA58 /* Storyboard.storyboard */,
 				00A1F1861DA98A0F0003BA58 /* Assets.xcassets */,
 				00A1F18B1DA98A0F0003BA58 /* Info.plist */,
-				00A1F1AF1DA9AA4B0003BA58 /* AddTaskViewController.swift */,
 			);
 			path = "To do list";
 			sourceTree = "<group>";
@@ -259,7 +265,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				00A1F1821DA98A0F0003BA58 /* ViewController.swift in Sources */,
-				00A1F1B01DA9AA4B0003BA58 /* AddTaskViewController.swift in Sources */,
+				004E8AEE1DAAE65B0064AA5E /* AddTaskViewController.swift in Sources */,
+				004E8AEC1DAAE5C50064AA5E /* MasterTableViewController.swift in Sources */,
+				004E8AF01DAAE68D0064AA5E /* StatsViewController.swift in Sources */,
 				00A1F1801DA98A0F0003BA58 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
