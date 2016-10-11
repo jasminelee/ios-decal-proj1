@@ -32,7 +32,7 @@ class AddTaskViewController: UIViewController {
         print("Button tapped")
         let defaults = UserDefaults.standard
         
-        var itemList:NSMutableArray? = defaults.value(forKey: "itemList") as? NSMutableArray
+        var itemList:NSMutableArray? = (defaults.value(forKey: "itemList") as? NSArray)?.mutableCopy() as? NSMutableArray
         
         let dataSet:NSMutableDictionary = NSMutableDictionary()
         dataSet.setValue(titleTextField.text, forKey: ("itemTitle" as NSCopying) as! String)
@@ -42,6 +42,7 @@ class AddTaskViewController: UIViewController {
         print("Title is \(titleTextField.text) and description is \(notesTextView.text)")
         
         if (itemList != nil) { // data available
+            print(titleTextField.text, "if")
             let newMutableList:NSMutableArray? = NSMutableArray()
             
             for dict in itemList! {
@@ -53,6 +54,7 @@ class AddTaskViewController: UIViewController {
             defaults.set(newMutableList, forKey: "itemList")
             
         } else { // first todo item in list
+            print(titleTextField.text, "else")
             defaults.removeObject(forKey: "itemList")
             itemList = NSMutableArray()
             itemList!.add(dataSet)
