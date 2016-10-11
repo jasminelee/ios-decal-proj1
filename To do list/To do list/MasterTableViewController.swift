@@ -10,6 +10,12 @@ import UIKit
 
 class MasterTableViewController: UITableViewController {
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.tableView.reloadData()
+////        print(UserDefaults.standard.array(forKey: "itemList"))
+//    }
+    
     var toDoItems:NSMutableArray = NSMutableArray()
     
     required init(coder aDecoder: NSCoder) {
@@ -18,9 +24,11 @@ class MasterTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let defaults = UserDefaults.standard
-
+        print(type(of: defaults.object(forKey: "itemList")))
+//        print(type(of: defaults.object(forKey: "itemList"), viewDidAppear))
+//        print(defaults.object(forKey: "itemList"), "viewdidAppear")
         let itemListFromDefaults:NSMutableArray? = defaults.object(forKey: "itemList") as? NSMutableArray
-        
+        print(itemListFromDefaults, "viewDidAppear")
         if (itemListFromDefaults != nil) {
             toDoItems = itemListFromDefaults!
         }
@@ -28,15 +36,15 @@ class MasterTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -65,7 +73,23 @@ class MasterTableViewController: UITableViewController {
         return cell
     }
  
-
+//
+//    func deleteItem(sender: AnyObject) {
+//        var defaults = UserDefaults.standard
+//        var itemListArray:NSMutableArray = defaults.object(forKey: "itemList") as! NSMutableArray
+//        var mutableItemList: NSMutableArray = NSMutableArray()
+//        for dict in itemListArray {
+//            mutableItemList.add(dict as! NSDictionary)
+//        }
+//        
+//        var toDoData: NSDictionary = NSDictionary()
+//        mutableItemList.remove(toDoData)
+//        defaults.removeObject(forKey: "itemList")
+//        defaults.set(mutableItemList, forKey: "itemList")
+//        defaults.synchronize()
+//    }
+//    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

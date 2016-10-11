@@ -46,10 +46,10 @@
             </objects>
             <point key="canvasLocation" x="664.79999999999995" y="53.523238380809602"/>
         </scene>
-        <!--View Controller-->
+        <!--Stats View Controller-->
         <scene sceneID="2Jk-d0-e8v">
             <objects>
-                <viewController storyboardIdentifier="Stats" id="6oc-jc-llO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Stats" id="6oc-jc-llO" customClass="StatsViewController" customModule="To_do_list" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mjn-3Q-A8t"/>
                         <viewControllerLayoutGuide type="bottom" id="4gD-YQ-9Ed"/>
@@ -57,12 +57,24 @@
                     <view key="view" contentMode="scaleToFill" id="ndm-vg-rUK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="numLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hn1-wC-RXo">
+                                <frame key="frameInset" minX="150" minY="126" width="75" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="numLabel" destination="Hn1-wC-RXo" id="a8v-cA-7EO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l9b-A5-Rij" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="665" y="794"/>
+            <point key="canvasLocation" x="664.79999999999995" y="793.8530734632684"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="Pwh-p0-7j1">

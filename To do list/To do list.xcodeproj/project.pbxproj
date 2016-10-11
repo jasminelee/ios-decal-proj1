@@ -199,15 +199,18 @@
 				TargetAttributes = {
 					00A1F17B1DA98A0E0003BA58 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					00A1F18F1DA98A0F0003BA58 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 00A1F17B1DA98A0E0003BA58;
 					};
 					00A1F19A1DA98A0F0003BA58 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 00A1F17B1DA98A0E0003BA58;
 					};

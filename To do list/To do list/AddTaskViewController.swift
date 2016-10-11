@@ -32,14 +32,14 @@ class AddTaskViewController: UIViewController {
         print("Button tapped")
         let defaults = UserDefaults.standard
         
-
-        var itemList:Array? = defaults.value(forKey: "itemList") as! Array?
-        
-//        var itemList:NSMutableArray? = defaults.value(forKey: "itemList") as! NSMutableArray?
+        var itemList:NSMutableArray? = defaults.value(forKey: "itemList") as? NSMutableArray
         
         let dataSet:NSMutableDictionary = NSMutableDictionary()
-        dataSet.setValue(titleTextField, forKey: ("itemTitle" as NSCopying) as! String)
-        dataSet.setValue(notesTextView, forKey: ("itemNote" as NSCopying) as! String)
+        dataSet.setValue(titleTextField.text, forKey: ("itemTitle" as NSCopying) as! String)
+        dataSet.setValue(notesTextView.text, forKey: ("itemNote" as NSCopying) as! String)
+        dataSet.setValue("incomplete", forKey: ("itemStatus" as NSCopying) as! String)
+        
+        print("Title is \(titleTextField.text) and description is \(notesTextView.text)")
         
         if (itemList != nil) { // data available
             let newMutableList:NSMutableArray = NSMutableArray()
@@ -50,17 +50,17 @@ class AddTaskViewController: UIViewController {
             
             defaults.removeObject(forKey: "itemList")
             newMutableList.add(dataSet)
-            defaults.setValue(newMutableList, forKey: "itemList")
+            defaults.set(newMutableList, forKey: "itemList")
             
         } else { // first todo item in list
             defaults.removeObject(forKey: "itemList")
             itemList = NSMutableArray()
             itemList!.add(dataSet)
-            defaults.setValue(itemList, forKey: "itemList")
+            defaults.set(itemList, forKey: "itemList")
         }
         defaults.synchronize()
         self.navigationController!.popToRootViewController(animated: true)
-        print("finished pressing Done")
+        print("finished pressing Done", defaults.value(forKey: "itemList"))
     }
 
     /*
