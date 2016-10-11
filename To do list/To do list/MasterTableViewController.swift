@@ -24,10 +24,10 @@ class MasterTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let defaults = UserDefaults.standard
-        print(type(of: defaults.object(forKey: "itemList")))
+        print(type(of: defaults.object(forKey: "itemList")!))
 //        print(type(of: defaults.object(forKey: "itemList"), viewDidAppear))
 //        print(defaults.object(forKey: "itemList"), "viewdidAppear")
-        let itemListFromDefaults:NSMutableArray? = defaults.object(forKey: "itemList") as? NSMutableArray
+        let itemListFromDefaults:NSMutableArray? = (defaults.object(forKey: "itemList") as? NSArray)?.mutableCopy() as? NSMutableArray
         print(itemListFromDefaults, "viewDidAppear")
         if (itemListFromDefaults != nil) {
             toDoItems = itemListFromDefaults!

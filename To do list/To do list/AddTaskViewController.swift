@@ -42,14 +42,14 @@ class AddTaskViewController: UIViewController {
         print("Title is \(titleTextField.text) and description is \(notesTextView.text)")
         
         if (itemList != nil) { // data available
-            let newMutableList:NSMutableArray = NSMutableArray()
+            let newMutableList:NSMutableArray? = NSMutableArray()
             
             for dict in itemList! {
-                newMutableList.add(dict as! NSDictionary)
+                newMutableList!.add(dict as! NSMutableDictionary)
             }
             
             defaults.removeObject(forKey: "itemList")
-            newMutableList.add(dataSet)
+            newMutableList!.add(dataSet)
             defaults.set(newMutableList, forKey: "itemList")
             
         } else { // first todo item in list
