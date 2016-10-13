@@ -39,7 +39,7 @@ class AddTaskViewController: UIViewController {
         dataSet.setValue(notesTextView.text, forKey: ("itemNote" as NSCopying) as! String)
         dataSet.setValue("incomplete", forKey: ("itemStatus" as NSCopying) as! String)
         
-        print("Title is \(titleTextField.text) and description is \(notesTextView.text)")
+//        print("Title is \(titleTextField.text) and description is \(notesTextView.text)")
         
         if (itemList != nil) { // data available
             print(titleTextField.text, "if")
@@ -62,7 +62,7 @@ class AddTaskViewController: UIViewController {
         }
         defaults.synchronize()
         self.navigationController!.popToRootViewController(animated: true)
-        print("finished pressing Done", defaults.value(forKey: "itemList"))
+//        print("finished pressing Done", defaults.value(forKey: "itemList"))
     }
 
     /*

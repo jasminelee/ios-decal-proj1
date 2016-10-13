@@ -69,10 +69,66 @@ class MasterTableViewController: UITableViewController {
 
         // Configure the cell...
         let toDoItem:NSDictionary = toDoItems.object(at: indexPath.row) as! NSDictionary
-        cell.textLabel?.text = (toDoItem.object(forKey: "itemTitle") as! String)
+        cell.textLabel?.text = (toDoItem.object(forKey: "itemTitle") as! String)        
         return cell
     }
- 
+
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath)
+
+        toDoItems = ((UserDefaults.standard.object(forKey: "itemList") as? NSArray)?.mutableCopy() as? NSMutableArray)!
+        
+        let toDoItem:NSMutableDictionary = (toDoItems.object(at: indexPath.row) as! NSMutableDictionary)
+        
+        if toDoItem.object(forKey: "itemStatus") as! String == "incomplete" {
+            cell?.accessoryType = .checkmark
+            changeItemStatus(toDoItem, markComplete: true)
+        } else {
+            cell?.accessoryType = .none
+            changeItemStatus(toDoItem, markComplete:  false)
+        }
+        print(UserDefaults.standard.object(forKey: "itemList"))
+    }
+    
+    func changeItemStatus(_ oldToDoItem: NSMutableDictionary, markComplete: Bool) {
+        print("change item status")
+        let defaults = UserDefaults.standard
+        
+        var itemList:NSMutableArray? = (defaults.value(forKey: "itemList") as? NSArray)?.mutableCopy() as? NSMutableArray
+        
+//        if (itemList != nil) { // data available
+            let newMutableList:NSMutableArray? = NSMutableArray()
+            
+            for dict in itemList! {
+                if dict as! NSMutableDictionary == oldToDoItem {
+                    let newToDo = NSMutableDictionary()
+                    newToDo.setValue(oldToDoItem.object(forKey: "itemTitle"), forKey: "itemTitle")
+                    newToDo.setValue(oldToDoItem.object(forKey: "itemNote"), forKey: "itemNote")
+                    if markComplete {
+                        newToDo.setValue("complete", forKey: "itemStatus")
+                    } else {
+                        newToDo.setValue("incomplete", forKey: "itemStatus")
+                    }
+                    newMutableList!.add(newToDo)
+                } else {
+                    newMutableList!.add(dict as! NSMutableDictionary)
+                }
+            }
+            
+            defaults.removeObject(forKey: "itemList")
+            defaults.set(newMutableList, forKey: "itemList")
+            
+//        } else { // first todo item in list
+//            defaults.removeObject(forKey: "itemList")
+//            itemList = NSMutableArray()
+//            defaults.set(itemList, forKey: "itemList")
+//        }
+        defaults.synchronize()
+    }
+    
+
 //
 //    func deleteItem(sender: AnyObject) {
 //        var defaults = UserDefaults.standard
