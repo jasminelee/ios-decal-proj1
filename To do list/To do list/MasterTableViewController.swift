@@ -126,6 +126,40 @@ class MasterTableViewController: UITableViewController {
         defaults.synchronize()
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        toDoItems = ((UserDefaults.standard.object(forKey: "itemList") as? NSArray)?.mutableCopy() as? NSMutableArray)!
+        
+        let toDoItem:NSMutableDictionary = (toDoItems.object(at: indexPath.row) as! NSMutableDictionary)
+        
+        if editingStyle == .delete {
+            print(toDoItem, "que?")
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            deleteTask(toDoItem)
+            tableView.endUpdates()
+        }
+    }
+    
+    func deleteTask(_ taskToDelete: NSMutableDictionary) {
+        print("delete a task")
+        let defaults = UserDefaults.standard
+        
+        var itemList:NSMutableArray? = (defaults.value(forKey: "itemList") as? NSArray)?.mutableCopy() as? NSMutableArray
+        
+        let newMutableList:NSMutableArray? = NSMutableArray()
+        
+        for dict in itemList! {
+            if dict as! NSMutableDictionary != taskToDelete {
+                newMutableList!.add(dict)
+            }
+        }
+        defaults.removeObject(forKey: "itemList")
+        defaults.set(newMutableList, forKey: "itemList")
+        defaults.synchronize()
+        let itemListFromDefaults:NSMutableArray? = (defaults.object(forKey: "itemList") as? NSArray)?.mutableCopy() as? NSMutableArray
+        toDoItems = itemListFromDefaults!
+    }
     
     
     /*

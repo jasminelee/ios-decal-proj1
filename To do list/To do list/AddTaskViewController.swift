@@ -71,7 +71,7 @@ class AddTaskViewController: UIViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
+    
     /*
     // MARK: - Navigation
 
