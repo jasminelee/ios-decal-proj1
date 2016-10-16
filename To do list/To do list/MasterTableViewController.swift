@@ -133,7 +133,7 @@ class MasterTableViewController: UITableViewController {
         let toDoItem:NSMutableDictionary = (toDoItems.object(at: indexPath.row) as! NSMutableDictionary)
         
         if editingStyle == .delete {
-            print(toDoItem, "que?")
+//            print(toDoItem, "que?")
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .fade)
             deleteTask(toDoItem)
@@ -142,7 +142,7 @@ class MasterTableViewController: UITableViewController {
     }
     
     func deleteTask(_ taskToDelete: NSMutableDictionary) {
-        print("delete a task")
+//        print("delete a task")
         let defaults = UserDefaults.standard
         
         var itemList:NSMutableArray? = (defaults.value(forKey: "itemList") as? NSArray)?.mutableCopy() as? NSMutableArray

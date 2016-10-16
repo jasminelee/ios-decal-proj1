@@ -16,9 +16,7 @@ class StatsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let defaults = UserDefaults.standard
-        
-        let itemListFromDefaults:NSMutableArray? = defaults.object(forKey: "itemList") as? NSMutableArray
+        let itemListFromDefaults:NSMutableArray? = ((UserDefaults.standard.object(forKey: "itemList") as? NSArray)?.mutableCopy() as? NSMutableArray)!
         
         if (itemListFromDefaults != nil) {
             toDoItems = itemListFromDefaults!
@@ -30,7 +28,6 @@ class StatsViewController: UIViewController {
                 count += 1
             }
         }
-        
         numLabel.text = String(count)
         // Do any additional setup after loading the view.
     }
